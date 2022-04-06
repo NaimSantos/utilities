@@ -1,47 +1,37 @@
 #include "util_time.h"
 
-using SteadyClock = std::chrono::steady_clock
 using milisegundos = std::chrono::milliseconds;
-
+using SteadyTimePoint = std::chrono::time_point<std::chrono::steady_clock>;
 
 class CustomTimer
 {
+	private:
+			SteadyTimePoint startpoint;
 	public:
 		CustomTimer(){
 			startpoint = std::chrono::steady_clock::now();
 		}
 		~CustomTimer(){
-			TimeDestructor();
-		}
-
-		void TimeDestructor(){
 			auto endpoint = std::chrono::steady_clock::now();
-
 			auto start = std::chrono::time_point_cast<milisegundos>(startpoint).time_since_epoch().count();
 			auto end = std::chrono::time_point_cast<milisegundos>(endpoint).time_since_epoch().count();
-
 			auto total = end - start;
-			double s = total*0.001;
-			
-			std::cout << "\nTempo decorrido:" << s << " segundos (" << total << " milisegundos)" << std::endl;
+
+			std::cout << "\nElapsed time: " << total << " milliseconds" << std::endl;
 		}
-	
-		private:
-			std::chrono::time_point<SteadyClock> startpoint;
 };
 
 //Uma forma de capturar precisamente o tempo:
-std::chrono::time_point<SteadyClock> capture_time(){
-	auto res = std::chrono::steady_clock::now();
-	return res;
+SteadyTimePoint capture_time(){
+	return std::chrono::steady_clock::now();;
 }
 
 //Retorna, em milissegundos, o tempo decorrido entre duas capturas de tempo:
-double get_elapsed_time(std::chrono::time_point<SteadyClock> ti, std::chrono::time_point<SteadyClock> tf){
-	double elapsed_time_ms = std::chrono::duration_cast<milisegundos> (tf - ti).count();
-	return elapsed_time_ms;
+double get_elapsed_time(SteadyTimePoint ti, SteadyTimePoint tf){
+	return static_cast<double>(std::chrono::duration_cast<milisegundos> (tf - ti).count());
 }
 
+//Exibe o horario atual em formato humanamente legível:
 void print_current_time(){
 	std::time_t now = std::time(nullptr);
 	std::cout << std::asctime(std::localtime(&now));
