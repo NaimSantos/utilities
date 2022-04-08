@@ -295,8 +295,6 @@ double int_simpson(double a, double b, double h, std::function<double (double)> 
 }
 
 
-
-
 /*Resolve um sistema utilizando o TDMA
 a = diagonal inferior (std::vector<double>)
 b = diagonal principal (std::vector<double>)
@@ -322,6 +320,7 @@ void solve_by_tdma(const std::vector<double>& a, const std::vector<double>& b, s
 		d[i] = d[i] - (c[i]*d[i+1]);
 	}
 }
+
 /* Versão alternativa, que não altera c e d, mas requer um vetor adicional f, para armazenar a solução
 */
 void solve_by_tdma(const std::vector<double>& a, const std::vector<double>& b, const std::vector<double>& c,  const std::vector<double>& d, std::vector<double>& f){
@@ -342,6 +341,43 @@ void solve_by_tdma(const std::vector<double>& a, const std::vector<double>& b, c
 	for (int i=N-1; i-- > 0; ) {
 		f[i] = d_start[i] - c_start[i] * d[i+1];
 	}
+}
+
+//Uma estimativa para o valor de PI:
+constexpr double NPI = 4 * std::atan(1);
+//Conversão de graus para radianos:
+double to_rad(double value){
+	return value * NPI / 180;
+}
+
+//Retorna se um arranjo bidimensional é uma matriz diagonalmente dominante:
+template <typename T>
+bool is_diagonal_dom(T** M, const int nrows, const int ncol){
+	if (nrows != ncol)
+		return false;
+
+	double sum {0.0};
+	for (int i = 0; i < nrows; i++){
+		double diag = std::fabs(M[i][i]);
+		for (int j = 0; j < ncol; j++){
+			if (i == j)
+				continue;
+			sum += std::fabs(M[i][j]);
+		}
+		if (sum > diag)
+			return false;
+	}
+	return true;
+}
+
+std::vector<double> linspace(const int Num, const double xf, const double xi){
+	auto h = (xf - xi) / (Num-1);
+	auto n = static_cast<int>(Vec.size());
+	std::vector<double> Vec (Num, n);
+	for (int i = 0; i < n; i++){
+		Vec[i] = xi + i*h;
+	}
+	return Vec
 }
 
 struct LinReg
