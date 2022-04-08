@@ -157,6 +157,29 @@ double solveRK5(double xi, double xf, double y0, double h, std::function<double 
 	return y;
 }
 
+
+
+void solveAdams(const double h, double xi, const double xf, std::vector<double>& Y, std::function<double (double, double)> fxy){
+
+	solveRK4(h, xi, xf-h, Y); //Runge kutta determina os valores não fornecidos
+	const auto n = std::round((xf - xi) / h);
+
+	double milne_p {0.0}, milne_c {0.0};
+	auto x = xi;
+	for (size_t i = 4; i <= n; ++i){
+
+		auto f4 = fxy(x+i*h, Y[i]);
+		auto f3 = fxy(x+(i-1)*h, Y[i-1]);
+		auto f2 = fxy(x+(i-2)*h, Y[i-2]);
+		auto f1 = fxy(x+(i-3)*h, Y[i-3]);
+
+		milne_p = Y[i] + ((55.0/24.0)*f4 - (59.0/24.0)*f3 + (37.0/24.0)*f2 - (9.0/24.0)*f1)*h;
+		milne_c = Y[i] + ((9.0/24.0)*fxy(x+i*h, milne_p) + (19.0/24.0)*fxy(x+(i)*h, Y[i]) - (5.0/24.0)*fxy(x+(i-1)*h, Y[i-1]) + (1.0/24.0)*fxy(x+(i-2)*h, Y[i-2]))*h;
+
+		Y.push_back(milne_c);
+	}
+}
+
 // Técnicas para obtenção de raizes de equações:
 double solveBisect(double a0, double b0, std::function<double (double)> ftarget){
 	if (ftarget(a0) * ftarget(b0) >= 0){
