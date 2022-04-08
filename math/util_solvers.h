@@ -1,4 +1,4 @@
-#praga once
+#pragma once
 
 #include <vector>
 #include <iostream>
@@ -161,7 +161,7 @@ double solveRK5(double xi, double xf, double y0, double h, std::function<double 
 
 void solveAdams(const double h, double xi, const double xf, std::vector<double>& Y, std::function<double (double, double)> fxy){
 
-	solveRK4(h, xi, xf-h, Y); //Runge kutta determina os valores não fornecidos
+	solveRK4(xi, xf-h, Y[0], h, fxy); //Runge kutta determina os valores não fornecidos
 	const auto n = std::round((xf - xi) / h);
 
 	double milne_p {0.0}, milne_c {0.0};
@@ -370,14 +370,13 @@ bool is_diagonal_dom(T** M, const int nrows, const int ncol){
 	return true;
 }
 
-std::vector<double> linspace(const int Num, const double xf, const double xi){
-	auto h = (xf - xi) / (Num-1);
-	auto n = static_cast<int>(Vec.size());
-	std::vector<double> Vec (Num, n);
+std::vector<double> linspace(const int n, const double xf, const double xi){
+	auto h = (xf - xi) / (n-1);
+	std::vector<double> Vec (n, 0.0);
 	for (int i = 0; i < n; i++){
 		Vec[i] = xi + i*h;
 	}
-	return Vec
+	return Vec;
 }
 
 struct LinReg
