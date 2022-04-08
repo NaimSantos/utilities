@@ -157,6 +157,73 @@ double solveRK5(double xi, double xf, double y0, double h, std::function<double 
 	return y;
 }
 
+// Técnicas para obtenção de raizes de equações:
+double solveBisect(double a0, double b0, std::function<double (double)> ftarget){
+	if (ftarget(a0) * ftarget(b0) >= 0){
+		return NAN;
+	}
+	double c0 {a0};
+	double eps {0.00001};
+	unsigned int i{1};
+	while ((b0-a0) >= eps || i<100){
+		c0 = (a0 + b0) / 2;
+		if (ftarget(c0) == 0)
+			break;
+		else
+			(ftarget(c0)*ftarget(a0) < 0) ? (b0 = c0) : (a0 = c0);
+		i++;
+	}
+	if(i>=100){
+		return NAN;
+	}
+	return c0;
+}
+
+//A derivada é avaliada por diferencas finitas centrada. Erro: O(h^4)
+double f_diff(double x, double h, std::function<double (double)> f){
+	double res = (-f(x+2*h) + 8*f(x+h) - 8*f(x-h) + f(x-2*h)) / (12*h);
+	return res;
+}
+
+double solveNewton(double x, std::function <double (double)> fnwtn){
+	auto h = fnwtn(x) / f_diff(x, 0.001, fnwtn);
+	unsigned int i {0};
+	while (std::fabs(h) >= 0.00001 && i<100){
+		h = fnwtn(x) / f_diff(x, 0.001, fnwtn);
+		x = x - h;
+		i++;
+	}
+	return x;
+}
+
+// Técnicas de integração numérica:
+double int_trapz(double a, double b, double h, std::function<double (double)> f){
+	double res {0.0};
+	const auto n = static_cast<int>( std::floor((std::fabs(b - a)) / h));
+	for (int i = 0; i < n - 1; i++){
+		res += f( a + i*h);
+	}
+	res += (f(a) + f(b) ) / 2;
+	res *= h;
+
+	return res;
+}
+double int_simpson(double a, double b, double h, std::function<double (double)> f){	
+	const auto n = static_cast<int>( std::floor((std::fabs(b - a)) / h));
+	//n - 1 pontos internos
+	double sum_odds {0.0};
+	for (int i = 1; i < n; i += 2){
+		sum_odds += f(a + i*h);
+	}
+	double sum_evens {0.0};
+	for (int i = 2; i < n; i += 2){
+		sum_evens += f(a + i*h);
+	}
+	return (f(a) + f(b) + 2*sum_evens + 4*sum_odds) * (h/3);
+}
+
+
+
 
 /*Resolve um sistema utilizando o TDMA
 a = diagonal inferior (std::vector<double>)
