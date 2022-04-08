@@ -196,6 +196,55 @@ double solveNewton(double x, std::function <double (double)> fnwtn){
 	return x;
 }
 
+//Diferenças finitas avançada para primeira derivada.
+double fdiff_a_1st(double x, double h, std::function<double (double)> f){
+	return (f(x+h) - f(x)) / h;
+}
+
+double fdiff_a_1st_v2(double x, double h, std::function<double (double)> f){
+	return (-f(x+2*h) + 4*f(x+h) - 3*f(x)) / (2*h);
+}
+
+//Diferenças finitas avançada para segunda derivada.
+double fdiff_a_2nd(double x, double h, std::function<double (double)> f){
+	return (f(x+2*h) - 2*f(x+h) + f(x)) / (h*h);
+}
+double fdiff_a_2nd_v2(double x, double h, std::function<double (double)> f){
+	return (-f(x+3*h) - 4*f(x+2*h) - 5*f(x+h) + 2*f(x)) / (h*h);
+}
+
+//Diferenças finitas recuada para primeira derivada.
+double fdiff_r_1st(double x, double h, std::function<double (double)> f){
+	return (f(x) - f(x-h)) / h;
+}
+double fdiff_r_1st_v2(double x, double h, std::function<double (double)> f){
+	return (3*f(x) - 4*f(x-h) + f(x-2*h)) / (2*h);
+}
+
+//Diferenças finitas recuada para segunda derivada:
+double fdiff_r_2nd(double x, double h, std::function<double (double)> f){
+	return (f(x) - 2*f(x-h) + f(x-2*h)) / (h*h);
+}
+double fdiff_r_2nd_v2(double x, double h, std::function<double (double)> f){
+	return (2*f(x) - 5*f(x-h) + 4*f(x-2*h) + f(x-3*h)) / (h*h);
+}
+
+//Diferenças finitas centrada  para primeira derivada:
+double fdiff_c_1st(double x, double h, std::function<double (double)> f){
+	return (f(x+h) - f(x-h)) / (2*h);
+}
+double fdiff_c_1st_v2(double x, double h, std::function<double (double)> f){
+	return (-f(x+2*h) + 8*f(x+h) - 8*f(x-h) + f(x-2*h)) / (12*h);
+}
+
+//Diferenças finitas centrada  para segunda derivada:
+double fdiff_c_2nd(double x, double h, std::function<double (double)> f){
+	return (f(x+h) - 2*f(x) + f(x-h)) / (h*h);
+}
+double fdiff_c_2nd_v2(double x, double h, std::function<double (double)> f){
+	return (-f(x+2*h) + 16*f(x+h) - 30*f(x) + 16*f(x-h) - f(x-2*h)) / (12*(h*h));
+}
+
 // Técnicas de integração numérica:
 double int_trapz(double a, double b, double h, std::function<double (double)> f){
 	double res {0.0};
