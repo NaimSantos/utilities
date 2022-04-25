@@ -4,6 +4,7 @@
 #include <iostream>
 #include <functional>
 #include <cmath>
+#include <utility>
 
 /* Parâmetros:
 xi = valor inicial de x
@@ -266,6 +267,20 @@ double fdiff_c_2nd(double x, double h, std::function<double (double)> f){
 }
 double fdiff_c_2nd_v2(double x, double h, std::function<double (double)> f){
 	return (-f(x+2*h) + 16*f(x+h) - 30*f(x) + 16*f(x-h) - f(x-2*h)) / (12*(h*h));
+}
+
+std::pair<double, double> raizes_segunda_ordem(double a, double b, double c){
+	double delta {b*b - 4*a*c};
+	std::pair<double, double> res (0.0, 0.0);
+
+	if ((delta < 0.0) || (a == 0.0) )
+		return res;
+	else
+	{
+		res.first = (-b + std::sqrt(delta))/(2*a);
+		res.second = (-b - std::sqrt(delta))/(2*a);
+		return res;
+	}
 }
 
 // Técnicas de integração numérica:
