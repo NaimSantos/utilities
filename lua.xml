@@ -1954,10 +1954,7 @@ after this first result. In case of any error, xpcall returns false plus the res
         <KeyWord name="widget.newTableView()" />
         <KeyWord name="widget.setTheme()" />
 		<KeyWord name="Duel" />
-		<KeyWord name="Effect" />
-		<KeyWord name="Card" />
-		<!-- Inicio das funções no escopo "Group" -->
-		<KeyWord name="Group" />
+		<!-- Inicio das funções no escopo "Duel" -->
 		<KeyWord name="GetMatchingGroup" func="yes" >
 			<Overload retVal="Group" descr="
 			Gets all cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's)
@@ -1970,6 +1967,12 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="..." />
 			</Overload>
 		</KeyWord>
+		<KeyWord name="Effect" />
+		<!-- Inicio das funções no escopo "Effect" -->
+		<KeyWord name="Card" />
+		<!-- Inicio das funções no escopo "Card" -->
+		<KeyWord name="Group" />
+		<!-- Inicio das funções no escopo "Group" -->
 		<KeyWord name="GetLuaRef" func="yes" >
 			<Overload retVal="int" descr="
 			Returns an integer representing the internal value used by lua to access the Group g.">
@@ -2008,6 +2011,129 @@ after this first result. In case of any error, xpcall returns false plus the res
 		<KeyWord name="KeepAlive" func="yes" >
 			<Overload retVal="void" descr="Makes a group (Group g) not be collected upon exiting the function.">
 				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="DeleteGroup" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Clone" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FromCards" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card c" />
+				<Param name="[...]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Clear" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AddCard" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="Card|Group other" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveCard" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="Card|Group other" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFirst" func="yes" >
+			<Overload retVal="Card/nil" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetNext" func="yes" >
+			<Overload retVal="Card/nil" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TakeatPos" func="yes" >
+			<Overload retVal="Card/nil" descr="">
+				<Param name="Group g" />
+				<Param name="int pos" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCount" func="yes" >
+			<Overload retVal=int" descr="">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ForEach" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Filter" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Match" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FilterCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FilterSelect" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="int player" />
+				<Param name="function f" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="[bool cancelable=false]" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Select" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="int player" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="[bool cancelable=false]" />
+				<Param name="Group|card ex|nil" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RandomSelect" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="int player" />
+				<Param name="int count" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsExists" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="int count" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
 			</Overload>
 		</KeyWord>
 		<!-- Fim das funções no escopo "Group" -->
@@ -2306,5 +2432,151 @@ after this first result. In case of any error, xpcall returns false plus the res
 		<KeyWord name="PLAYER_NONE" />
 		<KeyWord name="PLAYER_ALL" />
 		<KeyWord name="PLAYER_EITHER" />
+		<KeyWord name="CHAININFO_CHAIN_COUNT" />
+		<KeyWord name="CHAININFO_TRIGGERING_EFFECT" />
+		<KeyWord name="CHAININFO_TRIGGERING_PLAYER" />
+		<KeyWord name="CHAININFO_TRIGGERING_CONTROLER" />
+		<KeyWord name="CHAININFO_TRIGGERING_LOCATION" />
+		<KeyWord name="CHAININFO_TRIGGERING_SEQUENCE" />
+		<KeyWord name="CHAININFO_TARGET_CARDS" />
+		<KeyWord name="CHAININFO_TARGET_PLAYER" />
+		<KeyWord name="CHAININFO_TARGET_PARAM" />
+		<KeyWord name="CHAININFO_DISABLE_REASON" />
+		<KeyWord name="CHAININFO_DISABLE_PLAYER" />
+		<KeyWord name="CHAININFO_CHAIN_ID" />
+		<KeyWord name="CHAININFO_TYPE" />
+		<KeyWord name="CHAININFO_EXTTYPE" />
+		<KeyWord name="CHAININFO_TRIGGERING_POSITION" />
+		<KeyWord name="CHAININFO_TRIGGERING_CODE" />
+		<KeyWord name="CHAININFO_TRIGGERING_CODE2" />
+		<KeyWord name="CHAININFO_TRIGGERING_LEVEL" />
+		<KeyWord name="CHAININFO_TRIGGERING_RANK" />
+		<KeyWord name="CHAININFO_TRIGGERING_ATTRIBUTE" />
+		<KeyWord name="CHAININFO_TRIGGERING_RACE" />
+		<KeyWord name="CHAININFO_TRIGGERING_ATTACK" />
+		<KeyWord name="CHAININFO_TRIGGERING_DEFENSE" />
+		<KeyWord name="RESET_EVENT" />
+		<KeyWord name="RESET_CARD" />
+		<KeyWord name="RESET_CODE" />
+		<KeyWord name="RESET_COPY" />
+		<KeyWord name="RESET_DISABLE" />
+		<KeyWord name="RESET_TURN_SET" />
+		<KeyWord name="RESET_TOGRAVE" />
+		<KeyWord name="RESET_REMOVE" />
+		<KeyWord name="RESET_TEMP_REMOVE" />
+		<KeyWord name="RESET_TOHAND" />
+		<KeyWord name="RESET_TODECK" />
+		<KeyWord name="RESET_LEAVE" />
+		<KeyWord name="RESET_TOFIELD" />
+		<KeyWord name="RESET_CONTROL" />
+		<KeyWord name="RESET_OVERLAY" />
+		<KeyWord name="RESET_MSCHANGE" />
+		<KeyWord name="RESET_SELF_TURN" />
+		<KeyWord name="RESET_OPPO_TURN" />
+		<KeyWord name="RESET_PHASE" />
+		<KeyWord name="RESET_CHAIN" />
+		<KeyWord name="RESETS_STANDARD" />
+		<KeyWord name="RESETS_STANDARD_DISABLE" />
+		<KeyWord name="RESETS_REDIRECT" />
+		<KeyWord name="RESETS_CANNOT_ACT" />
+		<KeyWord name="RESETS_STANDARD_EXC_GRAVE" />
+		<KeyWord name="EFFECT_TYPE_SINGLE" />
+		<KeyWord name="EFFECT_TYPE_FIELD" />
+		<KeyWord name="EFFECT_TYPE_EQUIP" />
+		<KeyWord name="EFFECT_TYPE_ACTIONS" />
+		<KeyWord name="EFFECT_TYPE_ACTIVATE" />
+		<KeyWord name="EFFECT_TYPE_FLIP" />
+		<KeyWord name="EFFECT_TYPE_IGNITION" />
+		<KeyWord name="EFFECT_TYPE_TRIGGER_O" />
+		<KeyWord name="EFFECT_TYPE_QUICK_O" />
+		<KeyWord name="EFFECT_TYPE_TRIGGER_F" />
+		<KeyWord name="EFFECT_TYPE_QUICK_F" />
+		<KeyWord name="EFFECT_TYPE_CONTINUOUS" />
+		<KeyWord name="EFFECT_TYPE_XMATERIAL" />
+		<KeyWord name="EFFECT_TYPE_GRANT" />
+		<KeyWord name="EFFECT_TYPE_TARGET" />
+		<KeyWord name="EFFECT_FLAG_INITIAL" />
+		<KeyWord name="EFFECT_FLAG_FUNC_VALUE" />
+		<KeyWord name="EFFECT_FLAG_COUNT_LIMIT" />
+		<KeyWord name="EFFECT_FLAG_FIELD_ONLY" />
+		<KeyWord name="EFFECT_FLAG_CARD_TARGET" />
+		<KeyWord name="EFFECT_FLAG_IGNORE_RANGE" />
+		<KeyWord name="EFFECT_FLAG_ABSOLUTE_TARGET" />
+		<KeyWord name="EFFECT_FLAG_IGNORE_IMMUNE" />
+		<KeyWord name="EFFECT_FLAG_SET_AVAILABLE" />
+		<KeyWord name="EFFECT_FLAG_CANNOT_NEGATE" />
+		<KeyWord name="EFFECT_FLAG_CANNOT_DISABLE" />
+		<KeyWord name="EFFECT_FLAG_PLAYER_TARGET" />
+		<KeyWord name="EFFECT_FLAG_BOTH_SIDE" />
+		<KeyWord name="EFFECT_FLAG_COPY_INHERIT" />
+		<KeyWord name="EFFECT_FLAG_DAMAGE_STEP" />
+		<KeyWord name="EFFECT_FLAG_DAMAGE_CAL" />
+		<KeyWord name="EFFECT_FLAG_DELAY" />
+		<KeyWord name="EFFECT_FLAG_SINGLE_RANGE" />
+		<KeyWord name="EFFECT_FLAG_UNCOPYABLE" />
+		<KeyWord name="EFFECT_FLAG_OATH" />
+		<KeyWord name="EFFECT_FLAG_SPSUM_PARAM" />
+		<KeyWord name="EFFECT_FLAG_REPEAT" />
+		<KeyWord name="EFFECT_FLAG_NO_TURN_RESET" />
+		<KeyWord name="EFFECT_FLAG_EVENT_PLAYER" />
+		<KeyWord name="EFFECT_FLAG_OWNER_RELATE" />
+		<KeyWord name="EFFECT_FLAG_CANNOT_INACTIVATE" />
+		<KeyWord name="EFFECT_FLAG_CLIENT_HINT" />
+		<KeyWord name="EFFECT_FLAG_CONTINUOUS_TARGET" />
+		<KeyWord name="EFFECT_FLAG_LIMIT_ZONE" />
+		<KeyWord name="EFFECT_FLAG_IMMEDIATELY_APPLY" />
+		<KeyWord name="EFFECT_FLAG2_NAGA" />
+		<KeyWord name="EFFECT_FLAG2_COF" />
+		<KeyWord name="EFFECT_FLAG2_CHECK_SIMULTANEOUS" />
+		<KeyWord name="EFFECT_FLAG2_MAJESTIC_MUST_COPY" />
+		<KeyWord name="CATEGORY_DESTROY" />
+		<KeyWord name="CATEGORY_RELEASE" />
+		<KeyWord name="CATEGORY_REMOVE" />
+		<KeyWord name="CATEGORY_TOHAND" />
+		<KeyWord name="CATEGORY_TODECK" />
+		<KeyWord name="CATEGORY_TOGRAVE" />
+		<KeyWord name="CATEGORY_DECKDES" />
+		<KeyWord name="CATEGORY_HANDES" />
+		<KeyWord name="CATEGORY_SUMMON" />
+		<KeyWord name="CATEGORY_SPECIAL_SUMMON" />
+		<KeyWord name="CATEGORY_TOKEN" />
+		<KeyWord name="CATEGORY_FLIP" />
+		<KeyWord name="CATEGORY_POSITION" />
+		<KeyWord name="CATEGORY_CONTROL" />
+		<KeyWord name="CATEGORY_DISABLE" />
+		<KeyWord name="CATEGORY_DISABLE_SUMMON" />
+		<KeyWord name="CATEGORY_DRAW" />
+		<KeyWord name="CATEGORY_SEARCH" />
+		<KeyWord name="CATEGORY_EQUIP" />
+		<KeyWord name="CATEGORY_DAMAGE" />
+		<KeyWord name="CATEGORY_RECOVER" />
+		<KeyWord name="CATEGORY_ATKCHANGE" />
+		<KeyWord name="CATEGORY_DEFCHANGE" />
+		<KeyWord name="CATEGORY_COUNTER" />
+		<KeyWord name="CATEGORY_COIN" />
+		<KeyWord name="CATEGORY_DICE" />
+		<KeyWord name="CATEGORY_LEAVE_GRAVE" />
+		<KeyWord name="CATEGORY_LVCHANGE" />
+		<KeyWord name="CATEGORY_NEGATE" />
+		<KeyWord name="CATEGORY_ANNOUNCE" />
+		<KeyWord name="CATEGORY_FUSION_SUMMON" />
+		<KeyWord name="CATEGORY_TOEXTRA" />
+		<KeyWord name="TIMING_DRAW_PHASE" />
+		<KeyWord name="TIMING_STANDBY_PHASE" />
+		<KeyWord name="TIMING_MAIN_END" />
+		<KeyWord name="TIMING_BATTLE_START" />
+		<KeyWord name="TIMING_BATTLE_END" />
+		<KeyWord name="TIMING_END_PHASE" />
+		<KeyWord name="TIMING_SUMMON" />
+		<KeyWord name="TIMING_SPSUMMON" />
+		<KeyWord name="TIMING_BATTLE_STEP_END" />
+		<KeyWord name="TIMING_BATTLED" />
+		<KeyWord name="TIMINGS_CHECK_MONSTER" />
+		<KeyWord name="TIMINGS_CHECK_MONSTER_E" />
+		<KeyWord name="TIMING_POS_CHANGE" />
+		<KeyWord name="TIMING_ATTACK" />
+		<KeyWord name="TIMING_DAMAGE_STEP" />
+		<KeyWord name="TIMING_DAMAGE_CAL" />
+		<KeyWord name="TIMING_CHAIN_END" />
 	</AutoComplete>
 </NotepadPlus>
