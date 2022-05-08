@@ -1967,8 +1967,320 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="..." />
 			</Overload>
 		</KeyWord>
-		<KeyWord name="Effect" />
+		<KeyWord name="GetFusionMaterial" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetZoneWithLinkedCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int count" />
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EnableGlobalFlag" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int global_flag" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetStartingHand" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetLP" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetLP" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTurnPlayer" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTurnCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetDrawCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Duel.RegisterEffect" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Effect e" />
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RegisterFlagEffect" func="yes" >
+			<Overload retVal="Effect" descr="">
+				<Param name="int player" />
+				<Param name="int code" />
+				<Param name="int reset_flag" />
+				<Param name="int reset_count" />
+				<Param name="[int label=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFlagEffect" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+				<Param name="int code" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ResetFlagEffect" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="int code" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Destroy" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int reason" />
+				<Param name="[int dest=LOCATION_GRAVE]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Remove" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int|nil pos" />
+				<Param name="int reason" />
+				<Param name="[int player]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveCards" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Card|Group targets" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendtoGrave" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int reason" />
+				<Param name="[int player]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendtoHand" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int reason" />
+				<Param name="[int player]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendtoDeck" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int player|nil" />
+				<Param name="int seq" />
+				<Param name="int reason" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendtoExtraP" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int player|nil" />
+				<Param name="int reason" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sendto" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int location" />
+				<Param name="int reason" />
+				<Param name="[int pos=POS_FACEUP" />
+				<Param name="int player=PLAYER_NONE" />
+				<Param name="int seq=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetOperatedGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Summon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="bool ignore_count" />
+				<Param name="Effect e|nil" />
+				<Param name="[int min=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SpecialSummonRule" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SynchroSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="XyzSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LinkSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PendulumSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ProcedureSummonGroup" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="int sumtype" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ProcedureSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="int sumtype" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LoadScript" func="yes" >
+			<Overload retVal="bool,object/nil" descr="">
+				<Param name="string file_name" />
+				<Param name="[bool forced=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LoadCardScript" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="string|int ccode" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CanPlayerSetMonster" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int player" />
+				<Param name="[Card sumcard c" />
+				<Param name="int sumtype]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CanPlayerSetSpellTrap" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int player" />
+				<Param name="[Card setcard c" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MSet" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="bool ignore_count" />
+				<Param name="Effect e|nil" />
+				<Param name="[int minc=0" />
+				<Param name="int zone=0x1f]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SSet" func="yes" >
+			<Overload retVal="void\int" descr="">
+				<Param name="int player" />
+				<Param name="Card|Group targets" />
+				<Param name="[int target_player=player" />
+				<Param name="bool confirm=true]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LinkSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CreateToken" func="yes" >
+			<Overload retVal="Card" descr="">
+				<Param name="int player" />
+				<Param name="int code" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SpecialSummon" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int sum_type" />
+				<Param name="int sum_player" />
+				<Param name="int target_player" />
+				<Param name="bool no_check" />
+				<Param name="bool no_limit" />
+				<Param name="int pos" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SpecialSummonStep" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Card|Group targets" />
+				<Param name="int sum_type" />
+				<Param name="int sum_player" />
+				<Param name="int target_player" />
+				<Param name="bool no_check" />
+				<Param name="bool no_limit" />
+				<Param name="int pos" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SpecialSummonComplete" func="yes" >
+			<Overload retVal="void|int" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LinkSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="[Group|Card|nil must_use" />
+				<Param name="[Group|Card|nil mg" />
+				<Param name="int minc=0" />
+				<Param name="int maxc=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsCanAddCounter" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int player" />
+				<Param name="[int counter_type" />
+				<Param name="int count" />
+				<Param name="Card c]" />
+			</Overload>
+		</KeyWord>
 		<!-- Inicio das funções no escopo "Effect" -->
+		<KeyWord name="Effect" />
+		<KeyWord name="GetLuaRef" func="yes" >
+			<Overload retVal="int" descr="
+			Returns an integer representing the internal value used by lua to access the Group g.">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name
 		<KeyWord name="Card" />
 		<!-- Inicio das funções no escopo "Card" -->
 		<KeyWord name="Group" />
@@ -2125,6 +2437,172 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="Group g" />
 				<Param name="int player" />
 				<Param name="int count" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsExists" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="int count" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckWithSumEqual" func="yes" >
+			<Overload retVal="bool,bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="int sum" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectWithSumEqual" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="int player" />
+				<Param name="function f" />
+				<Param name="int count" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckWithSumGreater" func="yes" >
+			<Overload retVal="bool,bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="int sum" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectWithSumGreater" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="int player" />
+				<Param name="function f" />
+				<Param name="int sum" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMinGroup" func="yes" >
+			<Overload retVal="Group, int/nil" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMaxGroup" func="yes" >
+			<Overload retVal="Group, int/nil" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSum" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetClass" func="yes" >
+			<Overload retVal="{int, int, ...}" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetClassCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Remove" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Merge" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g1" />
+				<Param name="Card|Group other" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sub" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Group g1" />
+				<Param name="Card|Group other" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Equal" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g1" />
+				<Param name="Group g2" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsContains" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="Card c" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SearchCard" func="yes" >
+			<Overload retVal="Card" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Split" func="yes" >
+			<Overload retVal="Group, Group" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="Group|card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Includes" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g1" />
+				<Param name="Group g2" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetLinkedZone" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Group g" />
+				<Param name="int cp" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Iter" func="yes" >
+			<Overload retVal="iterator" descr="Iterates over the cards in (Group g) for use with for loops">
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckSameProperty" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckDifferentPropertyBinary" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckDifferentProperty" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="Group g" />
+				<Param name="function f" />
+				<Param name="..." />
 			</Overload>
 		</KeyWord>
 		<KeyWord name="IsExists" func="yes" >
@@ -2529,6 +3007,79 @@ after this first result. In case of any error, xpcall returns false plus the res
 		<KeyWord name="EFFECT_FLAG2_COF" />
 		<KeyWord name="EFFECT_FLAG2_CHECK_SIMULTANEOUS" />
 		<KeyWord name="EFFECT_FLAG2_MAJESTIC_MUST_COPY" />
+		<KeyWord name="EVENT_STARTUP" />
+		<KeyWord name="EVENT_FLIP" />
+		<KeyWord name="EVENT_FREE_CHAIN" />
+		<KeyWord name="EVENT_DESTROY" />
+		<KeyWord name="EVENT_REMOVE" />
+		<KeyWord name="EVENT_TO_HAND" />
+		<KeyWord name="EVENT_TO_DECK" />
+		<KeyWord name="EVENT_TO_GRAVE" />
+		<KeyWord name="EVENT_LEAVE_FIELD" />
+		<KeyWord name="EVENT_CHANGE_POS" />
+		<KeyWord name="EVENT_RELEASE" />
+		<KeyWord name="EVENT_DISCARD" />
+		<KeyWord name="EVENT_LEAVE_FIELD_P" />
+		<KeyWord name="EVENT_CHAIN_SOLVING" />
+		<KeyWord name="EVENT_CHAIN_ACTIVATING" />
+		<KeyWord name="EVENT_CHAIN_SOLVED" />
+		<KeyWord name="EVENT_CHAIN_NEGATED" />
+		<KeyWord name="EVENT_CHAIN_DISABLED" />
+		<KeyWord name="EVENT_CHAIN_END" />
+		<KeyWord name="EVENT_CHAINING" />
+		<KeyWord name="EVENT_BECOME_TARGET" />
+		<KeyWord name="EVENT_DESTROYED" />
+		<KeyWord name="EVENT_MOVE" />
+		<KeyWord name="EVENT_LEAVE_GRAVE" />
+		<KeyWord name="EVENT_ADJUST" />
+		<KeyWord name="EVENT_BREAK_EFFECT" />
+		<KeyWord name="EVENT_SUMMON_SUCCESS" />
+		<KeyWord name="EVENT_FLIP_SUMMON_SUCCESS" />
+		<KeyWord name="EVENT_SPSUMMON_SUCCESS" />
+		<KeyWord name="EVENT_SUMMON" />
+		<KeyWord name="EVENT_FLIP_SUMMON" />
+		<KeyWord name="EVENT_SPSUMMON" />
+		<KeyWord name="EVENT_MSET" />
+		<KeyWord name="EVENT_SSET" />
+		<KeyWord name="EVENT_BE_MATERIAL" />
+		<KeyWord name="EVENT_BE_PRE_MATERIAL" />
+		<KeyWord name="EVENT_DRAW" />
+		<KeyWord name="EVENT_DAMAGE" />
+		<KeyWord name="EVENT_RECOVER" />
+		<KeyWord name="EVENT_PREDRAW" />
+		<KeyWord name="EVENT_SUMMON_NEGATED" />
+		<KeyWord name="EVENT_FLIP_SUMMON_NEGATED" />
+		<KeyWord name="EVENT_SPSUMMON_NEGATED" />
+		<KeyWord name="EVENT_CONTROL_CHANGED" />
+		<KeyWord name="EVENT_EQUIP" />
+		<KeyWord name="EVENT_ATTACK_ANNOUNCE" />
+		<KeyWord name="EVENT_BE_BATTLE_TARGET" />
+		<KeyWord name="EVENT_BATTLE_START" />
+		<KeyWord name="EVENT_BATTLE_CONFIRM" />
+		<KeyWord name="EVENT_PRE_DAMAGE_CALCULATE" />
+		<KeyWord name="EVENT_DAMAGE_CALCULATING" />
+		<KeyWord name="EVENT_PRE_BATTLE_DAMAGE" />
+		<KeyWord name="EVENT_BATTLE_END" />
+		<KeyWord name="EVENT_BATTLED" />
+		<KeyWord name="EVENT_BATTLE_DESTROYING" />
+		<KeyWord name="EVENT_BATTLE_DESTROYED" />
+		<KeyWord name="EVENT_DAMAGE_STEP_END" />
+		<KeyWord name="EVENT_ATTACK_DISABLED" />
+		<KeyWord name="EVENT_BATTLE_DAMAGE" />
+		<KeyWord name="EVENT_TOSS_DICE" />
+		<KeyWord name="EVENT_TOSS_COIN" />
+		<KeyWord name="EVENT_TOSS_COIN_NEGATE" />
+		<KeyWord name="EVENT_TOSS_DICE_NEGATE" />
+		<KeyWord name="EVENT_LEVEL_UP" />
+		<KeyWord name="EVENT_PAY_LPCOST" />
+		<KeyWord name="EVENT_DETACH_MATERIAL" />
+		<KeyWord name="EVENT_TURN_END" />
+		<KeyWord name="EVENT_PHASE" />
+		<KeyWord name="EVENT_PHASE_START" />
+		<KeyWord name="EVENT_ADD_COUNTER" />
+		<KeyWord name="EVENT_REMOVE_COUNTER" />
+		<KeyWord name="EVENT_CUSTOM" />
+		<KeyWord name="EVENT_TOHAND_CONFIRM" />
 		<KeyWord name="CATEGORY_DESTROY" />
 		<KeyWord name="CATEGORY_RELEASE" />
 		<KeyWord name="CATEGORY_REMOVE" />
@@ -2569,14 +3120,188 @@ after this first result. In case of any error, xpcall returns false plus the res
 		<KeyWord name="TIMING_END_PHASE" />
 		<KeyWord name="TIMING_SUMMON" />
 		<KeyWord name="TIMING_SPSUMMON" />
-		<KeyWord name="TIMING_BATTLE_STEP_END" />
-		<KeyWord name="TIMING_BATTLED" />
-		<KeyWord name="TIMINGS_CHECK_MONSTER" />
-		<KeyWord name="TIMINGS_CHECK_MONSTER_E" />
+		<KeyWord name="TIMING_FLIPSUMMON" />
+		<KeyWord name="TIMING_MSET" />
+		<KeyWord name="TIMING_SSET" />
 		<KeyWord name="TIMING_POS_CHANGE" />
 		<KeyWord name="TIMING_ATTACK" />
 		<KeyWord name="TIMING_DAMAGE_STEP" />
 		<KeyWord name="TIMING_DAMAGE_CAL" />
+		<KeyWord name="TIMING_CHAIN_END" />
+		<KeyWord name="TIMING_DRAW" />
+		<KeyWord name="TIMING_DAMAGE" />
+		<KeyWord name="TIMING_RECOVER" />
+		<KeyWord name="TIMING_DESTROY" />
+		<KeyWord name="TIMING_REMOVE" />
+		<KeyWord name="TIMING_TOHAND" />
+		<KeyWord name="TIMING_TODECK" />
+		<KeyWord name="TIMING_TOGRAVE" />
+		<KeyWord name="TIMING_BATTLE_PHASE" />
+		<KeyWord name="TIMING_EQUIP" />
+		<KeyWord name="TIMING_BATTLE_STEP_END" />
+		<KeyWord name="TIMING_BATTLED" />
+		<KeyWord name="TIMINGS_CHECK_MONSTER" />
+		<KeyWord name="TIMINGS_CHECK_MONSTER_E" />
+		<KeyWord name="HINT_EVENT" />
+		<KeyWord name="HINT_MESSAGE" />
+		<KeyWord name="HINT_SELECTMSG" />
+		<KeyWord name="HINT_OPSELECTED" />
+		<KeyWord name="HINT_EFFECT" />
+		<KeyWord name="HINT_RACE" />
+		<KeyWord name="HINT_ATTRIB" />
+		<KeyWord name="HINT_CODE" />
+		<KeyWord name="HINT_NUMBER" />
+		<KeyWord name="HINT_CARD" />
+		<KeyWord name="HINT_ZONE" />
+		<KeyWord name="HINT_SKILL" />
+		<KeyWord name="HINT_SKILL_COVER" />
+		<KeyWord name="HINT_SKILL_FLIP" />
+		<KeyWord name="HINT_SKILL_REMOVE" />
+		<KeyWord name="CHINT_TURN" />
+		<KeyWord name="CHINT_CARD" />
+		<KeyWord name="CHINT_RACE" />
+		<KeyWord name="CHINT_ATTRIBUTE" />
+		<KeyWord name="CHINT_NUMBER" />
+		<KeyWord name="CHINT_DESC" />
+		<KeyWord name="OPCODE_ADD" />
+		<KeyWord name="OPCODE_SUB" />
+		<KeyWord name="OPCODE_MUL" />
+		<KeyWord name="OPCODE_DIV" />
+		<KeyWord name="OPCODE_AND" />
+		<KeyWord name="OPCODE_OR" />
+		<KeyWord name="OPCODE_NEG" />
+		<KeyWord name="OPCODE_NOT" />
+		<KeyWord name="OPCODE_BAND" />
+		<KeyWord name="OPCODE_BOR" />
+		<KeyWord name="OPCODE_BNOT" />
+		<KeyWord name="OPCODE_BXOR" />
+		<KeyWord name="OPCODE_LSHIFT" />
+		<KeyWord name="OPCODE_RSHIFT" />
+		<KeyWord name="OPCODE_ALLOW_ALIASES" />
+		<KeyWord name="OPCODE_ALLOW_TOKENS" />
+		<KeyWord name="OPCODE_ISCODE" />
+		<KeyWord name="OPCODE_ISSETCARD" />
+		<KeyWord name="OPCODE_ISTYPE" />
+		<KeyWord name="OPCODE_ISRACE" />
+		<KeyWord name="OPCODE_ISATTRIBUTE" />
+		<KeyWord name="OPCODE_GETCODE" />
+		<KeyWord name="OPCODE_GETSETCARD" />
+		<KeyWord name="OPCODE_GETTYPE" />
+		<KeyWord name="OPCODE_GETRACE" />
+		<KeyWord name="OPCODE_GETATTRIBUTE" />
+		<KeyWord name="DOUBLE_DAMAGE" />
+		<KeyWord name="HALF_DAMAGE" />
+		<KeyWord name="HINTMSG_RELEASE" />
+		<KeyWord name="HINTMSG_DISCARD" />
+		<KeyWord name="HINTMSG_DESTROY" />
+		<KeyWord name="HINTMSG_REMOVE" />
+		<KeyWord name="HINTMSG_TOGRAVE" />
+		<KeyWord name="HINTMSG_RTOHAND" />
+		<KeyWord name="HINTMSG_ATOHAND" />
+		<KeyWord name="HINTMSG_TODECK" />
+		<KeyWord name="HINTMSG_SUMMON" />
+		<KeyWord name="HINTMSG_SPSUMMON" />
+		<KeyWord name="HINTMSG_SET" />
+		<KeyWord name="HINTMSG_FMATERIAL" />
+		<KeyWord name="HINTMSG_SMATERIAL" />
+		<KeyWord name="HINTMSG_XMATERIAL" />
+		<KeyWord name="HINTMSG_FACEUP" />
+		<KeyWord name="HINTMSG_FACEDOWN" />
+		<KeyWord name="HINTMSG_ATTACK" />
+		<KeyWord name="HINTMSG_DEFENSE" />
+		<KeyWord name="HINTMSG_EQUIP" />
+		<KeyWord name="HINTMSG_REMOVEXYZ" />
+		<KeyWord name="HINTMSG_CONTROL" />
+		<KeyWord name="HINTMSG_DESREPLACE" />
+		<KeyWord name="HINTMSG_FACEUPATTACK" />
+		<KeyWord name="HINTMSG_FACEUPDEFENSE" />
+		<KeyWord name="HINTMSG_FACEDOWNATTACK" />
+		<KeyWord name="HINTMSG_FACEDOWNDEFENSE" />
+		<KeyWord name="HINTMSG_CONFIRM" />
+		<KeyWord name="HINTMSG_TOFIELD" />
+		<KeyWord name="HINTMSG_POSCHANGE" />
+		<KeyWord name="HINTMSG_SELF" />
+		<KeyWord name="HINTMSG_OPPO" />
+		<KeyWord name="HINTMSG_TRIBUTE" />
+		<KeyWord name="HINTMSG_DEATTACHFROM" />
+		<KeyWord name="HINTMSG_LMATERIAL" />
+		<KeyWord name="HINTMSG_ATTACKTARGET" />
+		<KeyWord name="HINTMSG_EFFECT" />
+		<KeyWord name="HINTMSG_TARGET" />
+		<KeyWord name="HINTMSG_COIN" />
+		<KeyWord name="HINTMSG_DICE" />
+		<KeyWord name="HINTMSG_CARDTYPE" />
+		<KeyWord name="HINTMSG_OPTION" />
+		<KeyWord name="HINTMSG_RESOLVEEFFECT" />
+		<KeyWord name="HINTMSG_SELECT" />
+		<KeyWord name="HINTMSG_POSITION " />
+		<KeyWord name="HINTMSG_ATTRIBUTE" />
+		<KeyWord name="HINTMSG_RACE" />
+		<KeyWord name="HINTMSG_CODE" />
+		<KeyWord name="HINTMSG_NUMBER" />
+		<KeyWord name="HINTMSG_EFFACTIVATE" />
+		<KeyWord name="HINTMSG_LVRANK" />
+		<KeyWord name="HINTMSG_RESOLVECARD" />
+		<KeyWord name="HINTMSG_ZONE" />
+		<KeyWord name="HINTMSG_DISABLEZONE" />
+		<KeyWord name="HINTMSG_TOZONE" />
+		<KeyWord name="HINTMSG_COUNTER" />
+		<KeyWord name="HINTMSG_NEGATE" />
+		<KeyWord name="HINTMSG_ATKDEF" />
+		<KeyWord name="SELECT_HEADS" />
+		<KeyWord name="SELECT_TAILS" />
+		<KeyWord name="REGISTER_FLAG_DETACH_XMAT" />
+		<KeyWord name="REGISTER_FLAG_CARDIAN" />
+		<KeyWord name="REGISTER_FLAG_THUNDRA" />
+		<KeyWord name="REGISTER_FLAG_ALLURE_LVUP" />
+		<KeyWord name="FUSPROC_NOTFUSION" />
+		<KeyWord name="FUSPROC_CONTACTFUS" />
+		<KeyWord name="FUSPROC_LISTEDMATS" />
+		<KeyWord name="FUSPROC_NOLIMIT" />
+		<KeyWord name="RITPROC_EQUAL" />
+		<KeyWord name="RITPROC_GREATER" />
+		<KeyWord name="MATERIAL_FUSION" />
+		<KeyWord name="MATERIAL_SYNCHRO" />
+		<KeyWord name="MATERIAL_XYZ" />
+		<KeyWord name="MATERIAL_LINK" />
+		<KeyWord name="EFFECT_SUPREME_CASTLE" />
+		<KeyWord name="EFFECT_WITCHCRAFTER_REPLACE" />
+		<KeyWord name="EFFECT_SYNSUB_NORDIC" />
+		<KeyWord name="EFFECT_ICEBARRIER_REPLACE" />
+		<KeyWord name="EFFECT_SECURITYFORCE_REPLACE" />
+		<KeyWord name="EFFECT_CYBERDARK_WORLD" />
+		<KeyWord name="ANNOUNCE_CARD" />
+		<KeyWord name="ANNOUNCE_CARD_FILTER" />
+		<KeyWord name="ACTIVITY_SUMMON" />
+		<KeyWord name="ACTIVITY_NORMALSUMMON" />
+		<KeyWord name="ACTIVITY_SPSUMMON" />
+		<KeyWord name="ACTIVITY_FLIPSUMMON" />
+		<KeyWord name="ACTIVITY_ATTACK" />
+		<KeyWord name="ACTIVITY_BATTLE_PHASE" />
+		<KeyWord name="ACTIVITY_CHAIN" />
+		<KeyWord name="EFFECT_COUNT_CODE_OATH" />
+		<KeyWord name="EFFECT_COUNT_CODE_DUEL" />
+		<KeyWord name="EFFECT_COUNT_CODE_SINGLE" />
+		<KeyWord name="GLOBALFLAG_DECK_REVERSE_CHECK" />
+		<KeyWord name="GLOBALFLAG_BRAINWASHING_CHECK" />
+		<KeyWord name="GLOBALFLAG_DELAYED_QUICKEFFECT" />
+		<KeyWord name="GLOBALFLAG_DETACH_EVENT" />
+		<KeyWord name="GLOBALFLAG_SPSUMMON_COUNT" />
+		<KeyWord name="GLOBALFLAG_SELF_TOGRAVE" />
+		<KeyWord name="GLOBALFLAG_SPSUMMON_ONCE" />
+		<KeyWord name="COUNTER_SPELL" />
+		<KeyWord name="COUNTER_BUSHIDO" />
+		<KeyWord name="COUNTER_A" />
+		<KeyWord name="COUNTER_FOG" />
+		<KeyWord name="COUNTER_KAIJU" />
+		<KeyWord name="COUNTER_PREDATOR" />
+		<KeyWord name="COUNTER_VENOM" />
+		
+		
+		
+		
+		
+		
 		<KeyWord name="TIMING_CHAIN_END" />
 	</AutoComplete>
 </NotepadPlus>
