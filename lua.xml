@@ -1953,20 +1953,8 @@ after this first result. In case of any error, xpcall returns false plus the res
         <KeyWord name="widget.newTabBar()" />
         <KeyWord name="widget.newTableView()" />
         <KeyWord name="widget.setTheme()" />
-		<KeyWord name="Duel" />
 		<!-- Inicio das funções no escopo "Duel" -->
-		<KeyWord name="GetMatchingGroup" func="yes" >
-			<Overload retVal="Group" descr="
-			Gets all cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's)
-			for which (function f) returns true, except (Card ex).">
-				<Param name="function f" />
-				<Param name="int player" />
-				<Param name="int loc_s" />
-				<Param name="int loc_o" />
-				<Param name="Group|Card ex|nil" />
-				<Param name="..." />
-			</Overload>
-		</KeyWord>
+		<KeyWord name="Duel">
 		<KeyWord name="GetFusionMaterial" func="yes" >
 			<Overload retVal="Group" descr="">
 				<Param name="int player" />
@@ -2212,16 +2200,6 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="bool confirm=true]" />
 			</Overload>
 		</KeyWord>
-		<KeyWord name="LinkSummon" func="yes" >
-			<Overload retVal="void" descr="">
-				<Param name="int player" />
-				<Param name="Card c" />
-				<Param name="[Group|Card|nil must_use" />
-				<Param name="[Group|Card|nil mg" />
-				<Param name="int minc=0" />
-				<Param name="int maxc=0]" />
-			</Overload>
-		</KeyWord>
 		<KeyWord name="CreateToken" func="yes" >
 			<Overload retVal="Card" descr="">
 				<Param name="int player" />
@@ -2272,6 +2250,21 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="Card c]" />
 			</Overload>
 		</KeyWord>
+		<KeyWord name="IsDuelType" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int flag" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveCounter" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+				<Param name="int counter_type" />
+				<Param name="int count" />
+				<Param name="int reason" />
+			</Overload>
+		</KeyWord>
 		<KeyWord name="IsCanRemoveCounter" func="yes" >
 			<Overload retVal="bool" descr="">
 				<Param name="int player" />
@@ -2291,10 +2284,7 @@ after this first result. In case of any error, xpcall returns false plus the res
 			</Overload>
 		</KeyWord>
 		<KeyWord name="ChangePosition" func="yes" >
-			<Overload retVal="int" descr="Changes the battle position of (Card|Group targets).(int au), (int ad), int (du) and (int dd)
-			are the positions cards in face-up attack, face-down attack, face-up defense, and face-down defense
-			positions will be changed to, respectively. If (bool noflip) is true, FLIP effects will not be
-			activated by this change. Returns the number of cards successfully affected.">
+			<Overload retVal="int" descr="">
 				<Param name="Card|Group targets" />
 				<Param name="int au" />
 				<Param name="[int ad=au" />
@@ -2374,6 +2364,13 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="int count" />
 			</Overload>
 		</KeyWord>
+		<KeyWord name="SortDeckbottom" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int sortplayer" />
+				<Param name="int targetplayer" />
+				<Param name="int count" />
+			</Overload>
+		</KeyWord>
 		<KeyWord name="CheckTribute" func="yes" >
 			<Overload retVal="bool" descr="">
 				<Param name="Card c" />
@@ -2429,13 +2426,13 @@ after this first result. In case of any error, xpcall returns false plus the res
 			</Overload>
 		</KeyWord>
 		<KeyWord name="Win" func="yes" >
-			<Overload retVal="void" descr="Makes layer (int player) win the Duel for a reason (int win_reason)">
+			<Overload retVal="void" descr="">
 				<Param name="int player" />
 				<Param name="int win_reason" />
 			</Overload>
 		</KeyWord>
 		<KeyWord name="Draw" func="yes" >
-			<Overload retVal="int" descr="Makes player (int player) draw a specific amount (int count) of Cards for a reason (int reason)">
+			<Overload retVal="int" descr="">
 				<Param name="int player" />
 				<Param name="int count" />
 				<Param name="int reason" />
@@ -2457,10 +2454,12 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="[bool is_step=false" />
 			</Overload>
 		</KeyWord>
+		<KeyWord name="RDComplete" func="yes" >
+			<Overload retVal="void" descr="">
+			</Overload>
+		</KeyWord>
 		<KeyWord name="Equip" func="yes" >
-			<Overload retVal="bool" descr="Makes player (int player) equips a Card (Card c1) to another Card (Card c2).
-			If (bool up) is false, the equip card will not have its position changed face-up.
-			(bool is_step) is for using with Duel.EquipComplete. Returns true if the equip is successful.">
+			<Overload retVal="bool" descr="">
 				<Param name="int player" />
 				<Param name="Card c1" />
 				<Param name="Card c2" />
@@ -2479,7 +2478,7 @@ after this first result. In case of any error, xpcall returns false plus the res
 			</Overload>
 		</KeyWord>
 		<KeyWord name="GetCardFromCardID" func="yes" >
-			<Overload retVal="Card|nil" descr="	Returns the card whose internal id matches cardID. If no card matches, returns nil.">
+			<Overload retVal="Card|nil" descr="">
 				<Param name="int cardID" />
 			</Overload>
 		</KeyWord>
@@ -2502,13 +2501,13 @@ after this first result. In case of any error, xpcall returns false plus the res
 			</Overload>
 		</KeyWord>
 		<KeyWord name="CheckLPCost" func="yes" >
-			<Overload retVal="bool" descr="Checks if a player (int player) can pay an amount (int cost) of LP">
+			<Overload retVal="bool" descr="">
 				<Param name="int player" />
 				<Param name="int cost" />
 			</Overload>
 		</KeyWord>
 		<KeyWord name="PayLPCost" func="yes" >
-			<Overload retVal="void" descr="Makes a player (int player) pay an amount (int cost) of LP.">
+			<Overload retVal="void" descr="">
 				<Param name="int player" />
 				<Param name="int cost" />
 			</Overload>
@@ -2520,7 +2519,7 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="int reason" />
 			</Overload>
 		</KeyWord>
-		<KeyWord name="DiscardDeck" func="yes" >
+		<KeyWord name="DiscardHand" func="yes" >
 			<Overload retVal="int" descr="">
 				<Param name="int player" />
 				<Param name="function f|nil" />
@@ -2547,7 +2546,7 @@ after this first result. In case of any error, xpcall returns false plus the res
 			</Overload>
 		</KeyWord>
 		<KeyWord name="ShuffleDeck" func="yes" >
-			<Overload retVal="void" descr="Shuffles the deck of (int player). Handled automatically if a card is sent to deck sequence -2.">
+			<Overload retVal="void" descr="">
 				<Param name="int player" />
 			</Overload>
 		</KeyWord>
@@ -2598,6 +2597,345 @@ after this first result. In case of any error, xpcall returns false plus the res
 				<Param name="int player" />
 			</Overload>
 		</KeyWord>
+		<KeyWord name="ChangeBattleDamage" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="int value" />
+				<Param name="[bool check=true]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChangeTargetCard" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int chainc" />
+				<Param name="Group g" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChangeTargetPlayer" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int chainc" />
+				<Param name="int player" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChangeTargetParameter" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int chainc" />
+				<Param name="int param" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BreakEffect" func="yes" >
+			<Overload retVal="void" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChangeChainOperation" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int chain_idx" />
+				<Param name="function f" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NegateActivation" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int chainc" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NegateEffect" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int chainc" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NegateRelatedChain" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Card c" />
+				<Param name="int reset" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NegateSummon" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="Card|Group targets" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IncreaseSummonedCount" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="[Card c]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckSummonedCount" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="[Card c]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetLocationCount" func="yes" >
+			<Overload retVal="int,int flag" descr="">
+				<Param name="int player" />
+				<Param name="int location" />
+				<Param name="[int use_player=reason player" />
+				<Param name="int reason=LOCATION_REASON_TOFIELD" />
+				<Param name="int zone=0xff]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFieldCard" func="yes" >
+			<Overload retVal="Card" descr="">
+				<Param name="int player" />
+				<Param name="int location" />
+				<Param name="int seq" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CheckLocation" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="int player" />
+				<Param name="int location" />
+				<Param name="int seq" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCurrentChain" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="[bool real_chain=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetChainInfo" func="yes" >
+			<Overload retVal="..." descr="">
+				<Param name="int chainc" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFirstTarget" func="yes" >
+			<Overload retVal="Card,..." descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCurrentPhase" func="yes" >
+			<Overload retVal="int" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SkipPhase" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="int player" />
+				<Param name="int phase" />
+				<Param name="int reset_phase" />
+				<Param name="int reset_count" />
+				<Param name="[int value=0]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsAttackCostPaid" func="yes" >
+			<Overload retVal="int" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsDamageCalculated" func="yes" >
+			<Overload retVal="bool" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetAttacker" func="yes" >
+			<Overload retVal="Card" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetAttackTarget" func="yes" >
+			<Overload retVal="Card|nil" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetBattleMonster" func="yes" >
+			<Overload retVal="Card|nil, Card|nil" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NegateAttack" func="yes" >
+			<Overload retVal="bool" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChainAttack" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="[Card c]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Readjust" func="yes" >
+			<Overload retVal="void" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AdjustInstantly" func="yes" >
+			<Overload retVal="void" descr="">
+				<Param name="[Card c]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFieldGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFieldGroupCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFieldGroupCountRush" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetDecktopGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="int count" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetExtraTopGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="int count" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMatchingGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMatchingGroupCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMatchingGroupCountRush" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetFirstMatchingCard" func="yes" >
+			<Overload retVal="Card" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsExistingMatchingCard" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectMatchingCard" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int sel_player" />
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int loc_s" />
+				<Param name="int loc_o" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="Group|Card ex|nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectCardsFromCode" func="yes" >
+			<Overload retVal="table[int,int],...|int" descr="">
+				<Param name="int sel_player" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="bool cancelable" />
+				<Param name="bool return_index" />
+				<Param name="int code1" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetReleaseGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="[bool use_hand=false" />
+				<Param name="[bool use_opp=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetReleaseGroupCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="int player" />
+				<Param name="[bool use_hand=false" />
+				<Param name="[bool use_opp=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTributeGroup" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="Card c" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTributeCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="Card c" />
+				<Param name="[Group mg=nil" />
+				<Param name="bool ex=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GrabSelectedCard" func="yes" >
+			<Overload retVal="Group" descr="">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectTribute" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int player" />
+				<Param name="Card c" />
+				<Param name="int min" />
+				<Param name="int max" />
+				<Param name="[Group mg=nil" />
+				<Param name="int to_player=player" />
+				<Param name="int zone=0x1f" />
+				<Param name="bool cancelable=false]" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTargetCount" func="yes" >
+			<Overload retVal="int" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+				<Param name="Group|Card ex=nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsExistingTarget" func="yes" >
+			<Overload retVal="bool" descr="">
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+				<Param name="int count" />
+				<Param name="Group|Card ex=nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectTarget" func="yes" >
+			<Overload retVal="Group" descr="">
+				<Param name="int sel_player" />
+				<Param name="function f" />
+				<Param name="int player" />
+				<Param name="int s" />
+				<Param name="int o" />
+				<Param name="int count" />
+				<Param name="Group|Card ex=nil" />
+				<Param name="..." />
+			</Overload>
+		</KeyWord>
+		
+		
 		<!-- Inicio das funções no escopo "Effect" -->
 		<KeyWord name="Effect" />
 		<KeyWord name="GetLuaRef" func="yes" >
