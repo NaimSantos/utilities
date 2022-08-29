@@ -55,6 +55,13 @@ void GetFileNames(){
 }
 
 
+//Obtains the names of all files in the current path and its subdirectories:
+void GetFileNamesRecursively(){
+	for(auto& filepath: fs::directory_iterator(fs::recursive_directory_iterator())){
+		auto filename = filepath.path().filename();
+		std::cout << filename << '\n';
+	}
+}
 
 namespace nrandom
 {
