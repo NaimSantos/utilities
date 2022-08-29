@@ -4,7 +4,7 @@
 #include <ctime>
 #include <random>
 #include <iostream>
-
+#include <filesystem>
 
 namespace ntime
 {
@@ -46,7 +46,13 @@ namespace ntime
 	}
 }
 
-
+//Obtains the names of all files in the current path, without checking for subpaths:
+void GetFileNames(){
+	for(auto& filepath: fs::directory_iterator(fs::current_path())){
+		auto filename = filepath.path().filename();
+		std::cout << filename << '\n';
+	}
+}
 
 
 
